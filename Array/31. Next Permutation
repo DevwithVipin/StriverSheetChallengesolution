@@ -1,0 +1,36 @@
+   void nextPermutation(vector<int>& nums) {
+    bool flag=true;
+    if(nums.size()==1||nums.size()==0)
+    {
+        return ;
+    }
+    int i;
+    for(i=nums.size()-2;i>=0;i--)
+    {
+        if(nums[i+1]>nums[i])
+        {
+           // swap(nums[i],nums[i-1]);
+          // reverse(nums.begin()+i,nums.end());
+            flag=false;
+            break;
+        }
+    }
+    if(flag)
+    {
+        reverse(nums.begin(),nums.end());
+    }
+    else
+    {
+        int j;
+        for(j=nums.size()-1;j>=i;j--)
+        {
+            if(nums[j]>nums[i])
+            {
+                break;
+            }
+        }
+        swap(nums[i],nums[j]);
+        reverse(nums.begin()+i+1,nums.end());
+    }
+    }
+};
